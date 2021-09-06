@@ -1,6 +1,5 @@
-package com.example.demo.behaviour_param;
+package com.example.demo.lambda;
 
-import com.example.demo.lambda.ReplaceWithLambdas;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -44,7 +43,14 @@ public class ReplaceWithLambdaTest {
 
     @Test
     public void testProcessFile_filterValueThree() throws IOException{
-        assertEquals("[three]", replaceWithLambdas.processFile((BufferedReader br)->br.lines().filter("three"::equals).collect(Collectors.toList()).toString()));
+        assertEquals("[three]", replaceWithLambdas.processFile(
+                (BufferedReader br)->br.lines().filter("three"::equals).collect(Collectors.toList()).toString()));
+    }
+
+    @Test
+    public void testProcessFile_filterValueFour() throws IOException {
+        assertEquals("[four]", replaceWithLambdas.processFile(
+                (BufferedReader br)->br.lines().filter("four"::equals).collect(Collectors.toList()).toString()));
     }
 
 }

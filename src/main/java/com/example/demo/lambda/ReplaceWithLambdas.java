@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Paths;
+import java.util.function.Function;
 
 /**
  * Created by sk on 05/09/21.
@@ -30,6 +31,17 @@ public class ReplaceWithLambdas {
         try (BufferedReader bufferedReader = new BufferedReader(
                 new FileReader(Paths.get("src","main","resources","testFile.txt").toString()))) {
             return brp.process(bufferedReader);
+        }
+    }
+
+    /**
+     * The above interface BufferReaderProcessor is not necessary
+     * when there is already available Functional Interface in Java8 itself.
+     */
+    public String processFileWithDefaultFunctionalInterface(Function<BufferedReader, String> functionalInterface) throws IOException {
+        try (BufferedReader bufferedReader = new BufferedReader(
+                new FileReader(Paths.get("src","main","resources","testFile.txt").toString()))) {
+            return functionalInterface.apply(bufferedReader);
         }
     }
 
