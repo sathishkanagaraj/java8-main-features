@@ -49,7 +49,7 @@ public class ReplaceWithLambdaTest {
 
     @Test
     public void testProcessFile_filterValueFour() throws IOException {
-        assertEquals("[four]", replaceWithLambdas.processFile(
+        assertEquals("[four]", replaceWithLambdas.processFileWithDefaultFunctionalInterface(
                 (BufferedReader br)->br.lines().filter("four"::equals).collect(Collectors.toList()).toString()));
     }
 
